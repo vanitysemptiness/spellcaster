@@ -1,6 +1,6 @@
 import tkinter as tk
 
-class FloatingBubbleApp:
+class UI:
     def __init__(self, root):
         self.root = root
         self.root.title("bubbles")
@@ -31,8 +31,3 @@ class FloatingBubbleApp:
 
         # Clear the text box
         self.text_entry.delete(0, tk.END)
-
-if __name__ == "__main__":
-    root = tk.Tk()
-    app = FloatingBubbleApp(root)
-    root.mainloop()
