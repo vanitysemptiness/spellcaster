@@ -19,7 +19,7 @@ class Ocean:
         with open('resources/tides.pkl', 'wb') as file:
             pickle.dump(self.TIDES_PATH, file, protocol=pickle.HIGHEST_PROTOCOL)
             
-    def load(self):
+    def load(self) -> set:
         # Reading the set back from the pickle file
         with open(self.BUBBLES_PATH, 'rb') as file:
             self.bubbles = pickle.load(file)
