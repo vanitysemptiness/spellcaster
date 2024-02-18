@@ -12,7 +12,7 @@ class Bubble:
         self.cleaned_text: str = cleaned_text
         self.commands: list = commands
         
-class Suds:
+class DirtyBubble:
     '''
     an unprocessed bubble
     it may contain reserved commands like save
@@ -39,5 +39,4 @@ class Suds:
         cleaned_text: str = bp.extract_bubble_text(ls)
         commands: list = bp.extract_commands(ls) # the Bubble should be the last one
         return Bubble(raw_text, cleaned_text, commands)
-        
-        
+    
