@@ -1,4 +1,7 @@
 
+
+use std::collections::HashSet;
+
 #[warn(dead_code)]
 mod bubble {
 
@@ -7,6 +10,15 @@ mod bubble {
     struct Bubble {
         text: String,
         topics: Vec<String>
+    }
+
+    impl Bubble {
+        fn new(text: &str, topics: Vec<String>) -> Bubble {
+            Bubble {
+                text: text.to_string(),
+                topics,
+            }
+        }
     }
 
     pub struct DirtyBubble {
@@ -32,12 +44,36 @@ mod bubble {
         }
     }
 
-    impl Bubble {
-        fn new(text: &str, topics: Vec<String>) -> Bubble {
-            Bubble {
-                text: text.to_string(),
-                topics,
+    pub struct Ocean {
+        bubbles: HashSet<Bubble>,
+        topics: HashSet<String>,
+    }
+
+    impl Ocean {
+
+        const SAVE: &str = "save";
+
+        fn new() -> Ocean {
+            Ocean {
+                bubbles: HashSet::new(),
+                topics: HashSet::new(),
             }
+        }
+    
+        fn add_bubble(&mut self, bubble: Bubble) {
+            self.bubbles.insert(bubble);
+        }
+    
+        fn add_topic(&mut self, topic: Topic) {
+            self.topics.insert(topic);
+        }
+    
+        fn get_bubbles(&self) -> &HashSet<Bubble> {
+            &self.bubbles
+        }
+    
+        fn get_topics(&self) -> &HashSet<Topic> {
+            &self.topics
         }
     }
 
