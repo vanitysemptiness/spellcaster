@@ -1,12 +1,9 @@
 
-
-use std::collections::HashSet;
-
 #[warn(dead_code)]
 mod bubble {
+    use std::collections::HashSet;
 
-    const TOPIC_SEPARATOR: &str = "::";
-
+    #[derive(Eq, Hash, PartialEq)]
     struct Bubble {
         text: String,
         topics: Vec<String>
@@ -24,6 +21,9 @@ mod bubble {
     pub struct DirtyBubble {
         raw: String,
     }
+
+    // for separating topics when processing incoming bubbles
+    const TOPIC_SEPARATOR: &str = "::";
 
     #[allow(private_interfaces)]
     impl DirtyBubble {
@@ -64,7 +64,7 @@ mod bubble {
             self.bubbles.insert(bubble);
         }
     
-        fn add_topic(&mut self, topic: Topic) {
+        fn add_topic(&mut self, topic: String) {
             self.topics.insert(topic);
         }
     
@@ -72,7 +72,7 @@ mod bubble {
             &self.bubbles
         }
     
-        fn get_topics(&self) -> &HashSet<Topic> {
+        fn get_topics(&self) -> &HashSet<String> {
             &self.topics
         }
     }
