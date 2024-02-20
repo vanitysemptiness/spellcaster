@@ -1,11 +1,12 @@
-# Hello Endpoint
+### Hello Endpoint
 GET http://localhost:8080/hello/John
+content-type: application/json
 
 
-# Post endpoint
-POST http://localhost:8080/post/endpoint HTTP/1.1
-Content-Type: application/json
+### Post endpoint
+POST http://localhost:8080/post/endpoint
+content-type: application/json
 
 {
-  "bubble_text": "Hello, Warp!"
+  "bubble_text": "beep boop beep"
 }
