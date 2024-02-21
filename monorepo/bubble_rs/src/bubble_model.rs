@@ -1,16 +1,16 @@
 
 #[warn(dead_code)]
-mod bubble {
+pub(crate) mod bubble_model {
     use std::collections::HashSet;
 
     #[derive(Eq, Hash, PartialEq)]
-    struct Bubble {
+    pub(crate) struct Bubble {
         text: String,
         topics: Vec<String>
     }
 
     impl Bubble {
-        fn new(text: &str, topics: Vec<String>) -> Bubble {
+        pub fn new(text: &str, topics: Vec<String>) -> Bubble {
             Bubble {
                 text: text.to_string(),
                 topics,
