@@ -1,5 +1,7 @@
 // main.rs
 mod controllers;
+mod bubble_model;
+mod storage;
 
 use warp::Filter;
 #[tokio::main]
