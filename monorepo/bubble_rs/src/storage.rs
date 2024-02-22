@@ -45,26 +45,28 @@ mod storage {
 
         use crate::bubble_model::bubble_model::Bubble;
 
+        use tempfile::tempdir;
+
         #[test]
         fn test_save_and_read_bubbles() {
             // Arrange
-            let temp_dir = get_temp_dir();
+            let temp_dir = tempdir().expect("Failed to create temporary directory");
             let file_path = temp_dir.path().join("bubbles.json");
             let text: String = String::from("text");
             let topics: Vec<String> = vec![String::from("topic")];
             let bubble: Bubble = Bubble::new(&text, topics);
-            let bubbles: HashSet<Bubble> = HashSet::new();
+            let mut bubbles: HashSet<Bubble> = HashSet::new();
             bubbles.insert(bubble);
-
+            let file_path_str: String = String::from(file_path.to_str().unwrap_or_default());
             // Act
             // Save the HashSet<Bubble> to a file
-            assert!(super::save_to_file(&bubbles, &file_path).is_ok());
+            assert!(super::save_to_file(&bubbles, &file_path_str).is_ok());
 
             // Read the HashSet<Bubble> back from the file
-            let read_bubbles_set: HashSet<Bubble> = super::read_from_file(&file_path).expect("Failed to read bubbles from file");
+            let read_bubbles_set: HashSet<Bubble> = super::read_from_file(&file_path.to_str().unwrap_or_default()).expect("Failed to read bubbles from file");
 
             // Assert
-            assert_eq!(bubbles_set, read_bubbles_set);
+            assert_eq!(bubbles, read_bubbles_set);
 
             // Cleanup
             drop(temp_dir);  // Automatically cleans up the temporary directory and its contents
@@ -73,17 +75,19 @@ mod storage {
         #[test]
         fn test_save_and_read_strings() {
             // Arrange
-            let temp_dir = get_temp_dir();
+            let temp_dir = tempdir().expect("Failed to create temporary directory");
             let file_path = temp_dir.path().join("strings.json");
 
-            let strings_set: HashSet<String> = vec!["apple".to_string(), "banana".to_string(), "cherry".to_string()].into_iter().collect();
+            let strings_set: HashSet<String> = vec!["apple".to_string(), 
+            "banana".to_string(), "cherry".to_string()].into_iter().collect();
 
+            let file_path_str: String = String::from(file_path.to_str().unwrap_or_default());
             // Act
             // Save the HashSet<String> to a file
-            assert!(super::save_to_file(&strings_set, &file_path).is_ok());
+            assert!(super::save_to_file(&strings_set, &file_path_str).is_ok());
 
             // Read the HashSet<String> back from the file
-            let read_strings_set: HashSet<String> = super::read_from_file(&file_path).expect("Failed to read strings from file");
+            let read_strings_set: HashSet<String> = super::read_from_file(&file_path_str).expect("Failed to read strings from file");
 
             // Assert
             assert_eq!(strings_set, read_strings_set);

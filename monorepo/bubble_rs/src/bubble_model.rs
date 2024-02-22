@@ -1,10 +1,10 @@
 
-#[warn(dead_code)]
-pub(crate) mod bubble_model {
-    use std::collections::HashSet;
 
-    #[derive(Eq, Hash, PartialEq)]
-    pub(crate) struct Bubble {
+pub mod bubble_model {
+    use serde::{Deserialize, Serialize};
+
+    #[derive(Debug, PartialEq, Eq, Hash, Serialize, Deserialize)]
+    pub struct Bubble {
         text: String,
         topics: Vec<String>
     }
@@ -41,39 +41,6 @@ pub(crate) mod bubble_model {
             let text: String = topics.pop().unwrap_or_default();
             let bubble: Bubble = Bubble::new(&text, topics);
             bubble
-        }
-    }
-
-    pub struct Ocean {
-        bubbles: HashSet<Bubble>,
-        topics: HashSet<String>,
-    }
-
-    impl Ocean {
-
-        const SAVE: &str = "save";
-
-        fn new() -> Ocean {
-            Ocean {
-                bubbles: HashSet::new(),
-                topics: HashSet::new(),
-            }
-        }
-    
-        fn add_bubble(&mut self, bubble: Bubble) {
-            self.bubbles.insert(bubble);
-        }
-    
-        fn add_topic(&mut self, topic: String) {
-            self.topics.insert(topic);
-        }
-    
-        fn get_bubbles(&self) -> &HashSet<Bubble> {
-            &self.bubbles
-        }
-    
-        fn get_topics(&self) -> &HashSet<String> {
-            &self.topics
         }
     }
 
