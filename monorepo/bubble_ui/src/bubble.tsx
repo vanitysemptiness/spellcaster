@@ -1,21 +1,21 @@
-interface Message {
-    text: string;
-    sender: string;
-    formatting?: {
-      bold: boolean;
-      italic: boolean;
-      underline: boolean;
-    };
-  }
+// interface Message {
+//     text: string;
+//     sender: string;
+//     formatting?: {
+//       bold: boolean;
+//       italic: boolean;
+//       underline: boolean;
+//     };
+//   }
   
-  const messageContainer = document.getElementById('message-container');
-  const messageInput = document.getElementById('message-input') as HTMLTextAreaElement;
-  const sendButton = document.getElementById('send-button');
-  const boldButton = document.getElementById('bold-button');
-  const italicButton = document.getElementById('italic-button');
-  const underlineButton = document.getElementById('underline-button');
+//   const messageContainer = document.getElementById('message-container');
+//   const messageInput = document.getElementById('message-input') as HTMLTextAreaElement;
+//   const sendButton = document.getElementById('send-button');
+//   const boldButton = document.getElementById('bold-button');
+//   const italicButton = document.getElementById('italic-button');
+//   const underlineButton = document.getElementById('underline-button');
   
-  const messages: Message[] = [];
+//   const messages: Message[] = [];
   
   // function addMessage(text: string, sender: string = 'user'): void {
   //   const message = { text, sender, formatting: {} }; // Initialize formatting object
@@ -51,4 +51,5 @@ interface Message {
   //     underline: underlineButton.classList
   //   }
   // }
+  export {}
   
