@@ -75,10 +75,6 @@ pub mod BubbleCache{
             assert!(cache.get_bubbles().is_empty());
             assert_eq!(cache.get_topics(), &hashset![topic]);
         }
-
-        // Additional tests for other methods...
-
-        // You can add more tests to cover other methods like get_bubbles, get_topics, etc.
     }
 
 }

@@ -1,21 +1,8 @@
+
+mod bubble_model;
+use bubble_model::bubble_model::Bubble;
 use std::io::{self, Write};
-use std::collections::{HashSet, HashMap};
-
-#[derive(Debug, Eq, PartialEq, Hash)]
-struct Bubble {
-    topic: String,
-    text: String,
-}
-
-impl Bubble {
-    // Constructor method for creating a new Bubble
-    fn new(topic: &str, text: &str) -> Self {
-        Bubble {
-            topic: topic.to_string(),
-            text: text.to_string(),
-        }
-    }
-}
+use std::collections::{HashMap};
 
 #[derive(Debug)]
 struct Bubbles {
@@ -39,7 +26,7 @@ impl Bubbles {
     }
 
     // Print the Bubbles in the desired format
-    fn print_bubbles(&self) {
+    fn display_bubbles(&self) {
         for (topic, bubbles) in &self.content {
             println!("Topic: {}", topic);
             for bubble in bubbles {
@@ -50,9 +37,10 @@ impl Bubbles {
     }
 }
 
+
 fn parse_bubble(bubbles: &mut Bubbles, input: &str) {
     // Split the input on ":"
-    let parts: Vec<&str> = input.split(':').map(|s| s.trim()).collect();
+    let parts: Vec<&str> = input.split(':').map(|s| s.trim()).collect(); //TODO: more effective parsing
 
     // Check if the input has at least two parts
     if parts.len() >= 2 {
@@ -63,7 +51,7 @@ fn parse_bubble(bubbles: &mut Bubbles, input: &str) {
         let new_bubble = Bubble::new(topic, text);
         bubbles.add_bubble(new_bubble);
     } else {
-        println!("Invalid input: {}", input);
+        println!("This Bubble Popped: {}", input);
     }
 }
 /*
@@ -73,9 +61,11 @@ fn parse_bubble(bubbles: &mut Bubbles, input: &str) {
    is then processed, and the corresponding spell or action is executed. The loop
    continues until the user decides to exit by entering "exit".
 */
+
 fn main() {
     // global repo for bubbles
     let mut bubbles: Bubbles = Bubbles::new();
+    let mut global_topic: String = "";
     loop {
         // Print a prompt
         print!("✨ ");

@@ -12,7 +12,6 @@ warp = "0.3"
 tokio = { version = "1", features = ["full"] }
 tempfile = "3.2"
 lazy_static = "1.4"
-clap = { version = "4.0", features = ["derive"] }
 
 [[bin]]
 name = "server"
@@ -20,4 +19,4 @@ path = "src/main.rs"
 
 [[bin]]
 name = "spellcaster"
-path = "src/spellcaster.rs"
+path = "src/cli.rs"
