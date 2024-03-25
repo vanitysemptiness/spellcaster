@@ -1,0 +1,22 @@
+{
+  "name": "pdf_editor_ui",
+  "version": "1.0.0",
+  "description": "",
+  "main": "main.js",
+  "scripts": {
+    "start": "electron .",
+    "test": "jest",
+    "build": "webpack",
+    "dev": "nodemon --exec electron ."
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "electron": "^12.0.0",
+    "pdf-parse": "^1.1.1",
+    "webpack": "^5.91.0"
+  },
+  "devDependencies": {
+    "webpack-cli": "^5.1.4"
+  }
+}
